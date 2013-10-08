@@ -20,12 +20,14 @@ object DsdsSyncDemoBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += Classpaths.typesafeReleases,
+      resolvers ++= Seq(Classpaths.typesafeReleases, "Apache Repo" at "https://repository.apache.org/content/repositories/releases", "FuseSource Repo" at "http://repo.fusesource.com/nexus/content/groups/public" ),
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+        "org.odata4j" % "odata4j" % "0.5",
+        "org.apache.activemq" % "activemq-all" % "5.8.0",
         "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
       ),
